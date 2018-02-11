@@ -1,0 +1,22 @@
+{% extends 'webapp/base.html' %}
+{% block content %}
+<br>
+<br>
+
+{% if user == product.seller or user.is_staff %}
+     <a class="btn btn-default" href="{% url 'product_edit' pk=product.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+{% endif %}
+<br>
+<br>
+    <div class="post">
+        {% if product.added_date %}
+            <div class="date">
+                {{ product.added_date }}
+            </div>
+        {% endif %}
+        <h2 style="color:#808080">  Product: {{ product.name }}</h2>
+        <h3><span class = "glyphicon glyphicon-arrow-right"></span>  Cas Number: {{ product.Cas }}</h3>
+        <h3><span class = "glyphicon glyphicon-arrow-right"></span>  Grade: {{ product.grade }}</h3>
+        <h3><span class = "glyphicon glyphicon-arrow-right"></span>  Quantity: {{ product.quantity }}</h3>
+    </div>
+{% endblock %}

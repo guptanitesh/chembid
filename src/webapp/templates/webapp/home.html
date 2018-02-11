@@ -1,0 +1,48 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+ <div class='image'>
+<img src="/static/images/drug.jpg" >
+</div>
+ <section class="row home-intro">
+			<div class="container">
+				<div class="row intro-box">
+					<div class="col-lg-8 col-md-7 col-sm-6">
+						<div class="row sectionTitle text-left">
+							<h2 style="margin-left: 180px" class="this-title"><font color="add8e6"><br>What’s ChemBid?</font></h2>
+						</div>
+						
+						<div class='content-container2'>
+						<p><p>ChemBid is an android application built to help you buy raw materials and sell products, non-moving stock from a huge database of chemical and pharmaceutical companies and also to cut costs.</p>
+						<p>A small and determined team who believe that no one can change the world, but a little help can make someone's world better. </p>
+						<p>As a saying goes "If you cannot do great things, do small things in a great way". </p>
+						<p>We at ChemBid, idealize to deliver that small thing in a great way to make your world better.</p></p>
+					</div></div>
+					
+				</div>
+			</div>
+		</section>
+
+		<br>
+		<br>
+		<br>
+	<div class="input-group" align = "right">
+		<input type="text" name="q" id="search" placeholder="search" class="form-control">
+		<span class="input-group-btn">
+		<button type="submit" class="btn btn-primary" onclick="foo();"><span style="font-size:1em" class="glyphicon glyphicon-search"></span> </button>
+		</span>
+		</div>
+
+		
+	<script>
+		var foo = function() {
+			var x = $('#search').val();
+			window.location.replace('/search/' + x);
+		};
+	</script>
+
+
+
+{% endblock %}
+
+

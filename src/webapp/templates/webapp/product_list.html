@@ -1,0 +1,40 @@
+{% extends 'webapp/base.html' %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+<p align="right"><a href="{% url 'product_new' %}" class="btn btn-warning" role="button">Add New Product</a></p>
+{% endif %}
+
+<br>
+{% for product in products %}
+	<div class="custom-card1">
+		<div class="date">
+			<p>Added: {{ product.added_date }}</p>
+		</div>
+		<h1><a href="{% url 'product_detail' pk=product.pk %}"> Product: {{ product.name }}</a></h1>
+		<!-- <p>Components: {{ product.components|linebreaksbr }}</p>
+	 -->	<br>
+{% if user.is_authenticated %}
+	 <div class ="post">
+		<a style="color:#FFFFFF" href="{% url 'productavailability_new' pk=product.pk %}" class="btn btn-success" role='button'>Check Availability</a>
+	</div>
+{% endif %}
+    </div>
+{% endfor %}
+<div class="pagination" style="margin-left:120px">
+    <span class="step-links">
+        {% if products.has_previous %}
+            <a href="?page={{ products.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ products.number }} of {{ products.paginator.num_pages }}.
+        </span>
+
+        {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}"> Next</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

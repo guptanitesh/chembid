@@ -1,0 +1,28 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+<br>
+<br>
+{% if user.is_staff %}
+     <a class="btn btn-default" href="{% url 'productavailability_edit' pk=productavailability.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+{% endif %}
+<br>
+<br>
+    <div class="post">
+        {% if productavailability.added_date %}
+            <div class="date">
+                {{ productavailability.added_date }}
+            </div>
+        {% endif %}
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Username: {{ productavailability.name }}</h3>
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Customer's Email: {{ productavailability.email }}</h3>
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Company Name: {{ productavailability.company_name }}</h3>
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Phone Number: {{ productavailability.phone_no }}</h3>
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Product Name: {{ productavailability.product_name }}</h3>
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Cas Number: {{ productavailability.Cas }}</h3>
+         <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Grade: {{ productavailability.grade }}</h3>
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Quantity: {{ productavailability.quantity }}</h3>
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Requested Date: {{ productavailability.added_date }}</h3>
+
+    </div>
+{% endblock %}

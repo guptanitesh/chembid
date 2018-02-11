@@ -1,0 +1,28 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+<br>
+<br>
+{% if user.is_staff %}
+     <a class="btn btn-default" href="{% url 'impurityavailability_edit' pk=impurityavailability.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+{% endif %}
+<br>
+<br>
+    <div class="post">
+        {% if impurityavailability.added_date %}
+            <div class="date">
+                {{ impurityavailability.added_date }}
+            </div>
+        {% endif %}
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Username: {{ impurityavailability.name }}</h3>
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Customer's Email: {{ impurityavailability.email }}</h3>
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Company Name: {{ impurityavailability.company_name }}</h3>
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Phone Number: {{ impurityavailability.phone_no }}</h3>
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Impurity Name: {{ impurityavailability.product_name }}</h3>
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Cas Number: {{ impurityavailability.Cas }}</h3>
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Grade: {{ impurityavailability.grade }}</h3>
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Quantity: {{ impurityavailability.quantity }}</h3>
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>  Requested Date: {{ impurityavailability.added_date }}</h3>
+
+    </div>
+{% endblock %}

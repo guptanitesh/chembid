@@ -1,0 +1,15 @@
+{% extends 'webapp/base.html' %}
+
+
+{% block content %}
+
+<br>
+{% for productavailability in productavailabilities %}
+	<div class="custom-card1">
+		<div class="date">
+			<p>Added: {{ productavailability.added_date }}</p>
+		</div>
+		<h1><a href="{% url 'productavailability_detail' pk=productavailability.pk %}"> Product Name: {{ productavailability.product_name }}</a></h1>
+	</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,112 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chembid</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/product.css' %}">
+
+</head>
+<body>
+
+<!-- Todo: Make current class active -->
+	<nav class="navbar navbar-fixed-top" style="background-color: #007bff; padding-right: 25px;">
+			<div class="navbar-header">	
+				<a href="{% url 'homepage' %}" class="navbar-brand">
+					<h2 style="margin: 0"><img src="/static/images/ch_logo.png" width="50" height="40" class="d-inline-block align-top" alt=""> ChemBid</h2>
+				</a>
+ 			</div>
+			 <div class ="ankit">
+			 <ul class="nav navbar-nav navbar-right">
+				<li>{% block nav-home %}<a href="{% url 'homepage' %}">Home</a>{% endblock %}</li>
+				<li>{% block nav-products %}<a href="{% url 'product_list' %}">Available Products</a>{% endblock %}</li>
+ 				<li>{% block nav-impurity %}<a href="{% url 'impurity_list' %}">Buy Impurities</a>{% endblock %}</li>
+		        
+		        {% if user.is_authenticated and user.is_superuser %}
+					<li>{% block nav-mainproducts %}<a href="{% url 'mainproduct_list' %}">Mainproducts</a>{% endblock %}</li>
+					<li>{% block nav-productavailability %}<a href="{% url 'productavailability_list' %}">Product Requests</a>{% endblock %}</li>
+					<li>{% block nav-impurityavailability %}<a href="{% url 'impurityavailability_list' %}">Impurity Requests</a>{% endblock %}</li>
+					<li>{% block nav-import_sheet %}<a href="{% url 'import_sheet' %}">Import</a>{% endblock %}</li>
+					<li>{% block nav-admin %}<a href="/admin">Dashboard</a>{% endblock %}</li>
+					<!-- <li><a href="{% url 'product_new' %}">Add Product</a></li> -->
+					<!-- <li><a href="{% url 'mainproduct_new' %}">Add Mainproduct</a></li> -->
+					<li><a href="{% url 'logout' %}">Logout</a></li>
+		        
+		        {% elif user.is_authenticated %}
+					<!-- <li><a href="{% url 'product_new' %}">Add Product</a></li> -->
+					<li><a href="{% url 'logout' %}">Logout</a></li>
+
+      			{% else %}
+      				<li><a href = "{% url 'login' %}"> Login </a> </li>
+      				<li><a href = "{% url 'signup' %}"> Signup </a> </li>
+      			{% endif %}
+
+<!-- 				<li>
+					<div class="input-group">
+				  		<input type="text" name="q" id="search" placeholder="search" class="form-control"
+				  style="width: 150px">
+					<span class="input-group-btn">
+					<button type="submit" class="btn btn-primary" onclick="foo();"><span style="font-size:1em" class="glyphicon glyphicon-search"></span> </button>
+					</span>
+					</div>
+
+				</li>
+ -->			</ul></div>
+ 		</div>
+ 	</nav>
+
+
+	<br><br><br><br>
+<!-- 	<script>
+		var foo = function() {
+			var x = $('#search').val();
+			window.location.replace('/search/' + x);
+		};
+	</script> -->
+	<div class="content container">
+		<div class="row">
+			<div class="col-md-8">
+				{% block content %}
+				{% endblock %}
+			</div>
+		</div>
+	</div>
+
+	<!-- <div class="custom-footer">
+	</div>
+
+ -->
+ <div class="custom-footer">
+ <div class="col-md-5 " style="margin: 0 auto; border-right:1px solid #2e495f; padding:30px 0px;">
+                        
+                            <h3 class="footer-title" style="margin-left:400px">About Us</h3>
+                            <p style="margin-left:400px">A small and determined team who believe that no one can change the world, but a little help can make someone's world better.</p>
+                            
+                        </div>
+
+<div class="col-md-5" style="margin-left:10px; border:none solid #2e495f; padding:30px 0px; ">
+                        
+                            <h3 class="footer-title" style="margin-left:50px">Contact Us</h3>
+                            <ul class="nav" style="margin-left:50px">
+                                <li class="tel"  ><a href="#" style="color:#000000"><i class="fa fa-phone"></i>+91 9876543210</a></li>
+                                <li class="email"><a href="mailto:sairajendra@chembid.in" style="color:#000000"><i class="fa fa-envelope-o"></i>sairajendra@chembid.in</a></li>
+                                                           </ul>
+                        </div>
+                    </div>
+                    </div><!-- 
+ <div class="custom-footer">
+                            <h3 class="footer-title">About Us</h3>
+                            <p>A small and determined team who believe that no one can change the world, but a little help can make someone's world better.</p>
+                        </div>
+-->
+</body>
+</html>

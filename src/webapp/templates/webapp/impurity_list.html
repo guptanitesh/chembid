@@ -1,0 +1,40 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<p align="right"><a href="{% url 'impurity_new' %}" class="btn btn-warning" role="button">Add New Impurity</a></p>
+{% endif %}
+<br>
+{% for impurity in impurities %}
+	<div class="custom-card1">
+		<div class="date">
+			<p>Added: {{ impurity.added_date }}</p>
+		</div>
+		<h1><a href="{% url 'impurity_detail' pk=impurity.id %}"> Impurity: {{ impurity.name }}</a></h1>
+		<br>
+{% if user.is_authenticated %}
+		<div class='post'
+		<h1><a style="color:#FFFFFF" href="{% url 'impurityavailability_new' pk=impurity.pk %}" class="btn btn-success" role='button'>Check Availability</a></h1>
+		</div>
+{% endif %}
+
+	</div>
+{% endfor %}
+<div class="pagination" style="margin-left:120px">
+    <span class="step-links">
+        {% if impurities.has_previous %}
+            <a href="?page={{ impurities.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ impurities.number }} of {{ impurities.paginator.num_pages }}.
+        </span>
+
+        {% if impurities.has_next %}
+            <a href="?page={{ impurities.next_page_number }}"> Next</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}	

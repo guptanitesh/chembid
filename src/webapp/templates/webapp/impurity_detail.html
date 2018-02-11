@@ -1,0 +1,19 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if impurity.added_date %}
+            <div class="date">
+                {{ impurity.added_date }}
+            </div>
+        {% endif %}
+{% if user.is_staff %}
+     
+{% endif %}
+        <h2 style="color:#808080">Impurity: {{ impurity.name }}</h2>
+
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>Cas: {{ impurity.Cas }}</h3>
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>Grade: {{impurtiy.grade}}jhjhjh</h3>
+        <h3> <span class = "glyphicon glyphicon-arrow-right"></span>Quantity: {{impurity.quantity}}</h3>
+    </div>
+{% endblock %}

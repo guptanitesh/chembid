@@ -1,0 +1,15 @@
+{% extends 'webapp/base.html' %}
+
+
+{% block content %}
+
+<br>
+{% for impurityavailability in impurityavailabilities %}
+	<div class="custom-card1">
+		<div class="date">
+			<p>Added: {{ impurityavailability.added_date }}</p>
+		</div>
+		<h1><a href="{% url 'impurityavailability_detail' pk=impurityavailability.pk %}"> Impurity Name: {{ impurityavailability.impurity_name }}</a></h1>
+	</div>
+{% endfor %}
+{% endblock %}
